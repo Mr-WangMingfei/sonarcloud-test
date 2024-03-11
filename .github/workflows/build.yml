@@ -44,11 +44,6 @@ jobs:
         shell: powershell
         run: |
           dotnet-sonarscanner begin /k:"Mr-WangMingfei_sonarcloud-test" /o:"mr-wangmingfei" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build src/ClassFramework.CodeGeneration.Bootstrap/ClassFramework.CodeGeneration.Bootstrap.csproj -c Release
-          dotnet src/ClassFramework.CodeGeneration.Bootstrap/bin/Release/net8.0/ClassFramework.CodeGeneration.Bootstrap.dll
-          dotnet build src/ClassFramework.CodeGeneration/ClassFramework.CodeGeneration.csproj -c Release
-          dotnet src/ClassFramework.CodeGeneration/bin/Release/net8.0/ClassFramework.CodeGeneration.dll
-          dotnet build ClassFramework.sln
-          dotnet test ClassFramework.sln --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+          dotnet build 
           dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
